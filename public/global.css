@@ -1,0 +1,47 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+h1{
+    text-align: center;
+}
+form{
+    width: 100%;
+    height: 36rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+form .user--name{
+    padding: 10px;
+    display: flex;
+    width: 24%;
+}
+.messages{
+    overflow: auto;
+    width: 94%;
+    height: 78%;
+    border: 1px solid #222;
+    border-radius: 7px;
+}
+.input__embaixo{
+    height: 37px;
+    width: 93%;
+}
+.user--message{
+    height: 100%;
+    width: 87%;
+}
+.input__embaixo input:nth-child(2){
+    height: 100%;
+    width: 12%;
+    background: blue;
+    border-radius: 6px;
+    color: white;
+}
+.text-message{
+    padding: 5px 0px 0px 9px;
+}
