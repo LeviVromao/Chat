@@ -24,4 +24,4 @@ app.get('/', (req,res)=>{
     res.sendFile(path.join(__dirname, "public","index.html"));
 });
 
-server.listen(5173, console.log('Server is running'));
+server.listen(process.env.PORT || 5173, console.log('Server is running'));
