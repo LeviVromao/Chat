@@ -22,9 +22,11 @@
     </form>
     <script>
         var socket = io();
-        const username = document.querySelector('.user--name');
-        const message = document.querySelector('.user--message');
-        const chat = document.querySelector('.chat');
+        var chat = document.querySelector('.chat');
+        
+        const renderMessages = (messages) =>{
+            $('.messages').append('<div class="text-message"><strong>'+messages.author +'</strong>:' +messages.message+'</div>');
+        };
 
         socket.on('previousMessage', (messages)=>{
             for(message of messages){
@@ -32,26 +34,26 @@
             }
         });
 
-        const renderMessages = (messages) =>{
-            $('.messages').append('<div class="text-message"><strong>'+messages.author +'</strong>:' +messages.message+'</div>');
-        };
 
         socket.on('receivedMessages', (message)=>{
             renderMessages(message);
         });
 
         chat.addEventListener('submit',(e)=>{
+            var username = document.querySelector('.user--name').value;
+            var message = document.querySelector('.user--message').value;
             e.preventDefault();
-            if(message.value.length && username.value.length){
-                const messageObject = 
+            if(message.length && username.length){
+                var messageObject = 
                 {
-                    author: username.value,
-                    message: message.value 
-                }
-                renderMessages(messageObject);
-                socket.emit('send Message', messageObject);
-                message.value = "";
-            }            
+                    author: username,
+                    message: message
+                }                     
+                message = ""
+            }   
+
+            renderMessages(messageObject);
+            socket.emit('send Message', messageObject);    
         });
     </script>
 </body>

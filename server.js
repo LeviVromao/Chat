@@ -14,6 +14,7 @@ io.on('connection', socket =>{
     console.log(`Client is connected with id: ${socket.id}`)
     socket.emit('previousMessage', messages);
     socket.on('send Message', data=>{
+   
     messages.push(data);
 
     socket.broadcast.emit('receivedMessages', data)
