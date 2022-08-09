@@ -49,8 +49,11 @@
                     author: username,
                     message: message
                 }                     
-                message = ""
-            }   
+                var deleteMessage = document.querySelector('.user--message');
+                deleteMessage.value = ""
+            }else{
+                alert('Insira um nome ou digite algo para prosseguir.')
+            }
 
             renderMessages(messageObject);
             socket.emit('send Message', messageObject);    
